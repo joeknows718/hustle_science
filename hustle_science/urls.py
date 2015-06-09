@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from django.contrib import admin
+from django.contrib import admin, auth 
 
 urlpatterns = patterns('',
     # Examples:
@@ -8,4 +8,6 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^ckeditor/', include('ckeditor.urls')),
+    url('^', include('django.contrib.auth.urls')),
+    url(r'^/', include('hustle_science_pkg.urls'))
 )

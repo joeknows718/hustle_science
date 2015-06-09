@@ -25,7 +25,7 @@ class Post(models.Model):
 	published = models.DateField() #defined in view as UTC converted client side w/ moment.js
 	author = models.ForeignKey(User)
 	featured_image = models.ImageField(upload_to='featured_img', blank=False)
-	body = RichTextField()
+	body = RichTextField(config_name='awesome_ckeditor')
 	video_iframe = models.URLField(max_length=200)
 	project_iframe = models.URLField(max_length=200)
 
@@ -43,7 +43,7 @@ class Comment(models.Model):
 		return self.comment_text
 
 
-class  Images(models.Model):
+class  Image(models.Model):
 	post =  models.ForeignKey(Post)
 	image = models.ImageField(upload_to='slideshow images')
 

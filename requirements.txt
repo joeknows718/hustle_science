@@ -1,3 +1,5 @@
  pillow==2.8.2
  django==1.7
- django-ckeditor
+ django-ckeditor==4.4.8
+
+ 

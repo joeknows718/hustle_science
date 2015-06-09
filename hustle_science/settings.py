@@ -81,7 +81,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
-
+TEMPLATE_PATH = os.path.join(BASE_DIR,'templates')
+STATIC_PATH = os.path.join(BASE_DIR, "static")
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
@@ -92,8 +93,8 @@ CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.j
 CKEDITOR_CONFIGS = {
     'awesome_ckeditor': {
         'toolbar': 'full',
-        'height': 300,
-        'width': 300,
+        'height': 600,
+        'width': 1100,
     },
 }
 
