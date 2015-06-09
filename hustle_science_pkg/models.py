@@ -1,48 +1,50 @@
 from django.db import models
 from django.contrib.auth.models import User 
+from ckeditor.fields import RichTextField
 
-class Category(models.Models):
-	tag = models.charField(max_length=128, unique=True)
+
+
+class Category(models.Model):
+	tag = models.CharField(max_length=128, unique=True)
 	def __unicode__(self): 
 		return self.tag 
 
-class UserProfile(model.Models):
-	user =  models.OnetoOne(User)
+class UserProfile(models.Model):
+	user =  models.OneToOneField(User)
 	picture = models.ImageField(upload_to='profile_images', blank=True)
 	#roles
-	about = models.TextAreaField
+	about = models.TextField()
 
 	def __unicode__(self):
 		return self.username
 
 
-class Post(model.Models):
+class Post(models.Model):
 	category = models.ManyToManyField(Category)
 	title = models.CharField(max_length=128, unique=True)
 	published = models.DateField() #defined in view as UTC converted client side w/ moment.js
 	author = models.ForeignKey(User)
-	featured_image = ImageField(upload_to='featured_images', blank=False)
-	body = models.TextAreaField()
+	featured_image = models.ImageField(upload_to='featured_img', blank=False)
+	body = RichTextField()
 	video_iframe = models.URLField(max_length=200)
 	project_iframe = models.URLField(max_length=200)
-	code_text = TextAreaField()
 
 	def __unicode__(self):
 		return self.title 
 
 
-class Comment(model.Models):
-	article = models.ForeignKey(Posts)
-	comment_text = models.CharField(max_length=255)
+class Comment(models.Model):
+	article = models.ForeignKey(Post)
+	comment_text = models.TextField()
 	published = models.DateTimeField()
-	username = models.CharField()
+	username = models.CharField(max_length=145)
 
 	def __unicode__(self):
 		return self.comment_text
 
 
-class  Images(model.Models):
-	post =  ForeignKey(Posts)
+class  Images(models.Model):
+	post =  models.ForeignKey(Post)
 	image = models.ImageField(upload_to='slideshow images')
 
 
