@@ -37,7 +37,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'hustle_science_pkg',
-    'ckeditor'
+    'ckeditor', #https://github.com/django-ckeditor/django-ckeditor
+    'embed_video' #http://django-embed-video.readthedocs.org/en/v1.0.0/examples.html
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,6 +51,13 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+EMBED_VIDEO_BACKENDS =  (
+    'embed_video.backends.YoutubeBackend',
+    'embed_video.backends.VimeoBackend',
+    'embed_video.backends.SoundCloudBackend',
+    )
+
 
 ROOT_URLCONF = 'hustle_science.urls'
 

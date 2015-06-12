@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User 
 from ckeditor.fields import RichTextField
+from embed_video.fields import EmbedVideoField
+from django.template.defaultfilters import slugify
 
 
 
@@ -8,6 +10,11 @@ class Category(models.Model):
 	tag = models.CharField(max_length=128, unique=True)
 	def __unicode__(self): 
 		return self.tag 
+
+class Content_Type(models.Model):
+	media_type = models.CharField(max_length=128, unique=True)
+	def __unicode__(self):
+		return self.media_type
 
 class UserProfile(models.Model):
 	user =  models.OneToOneField(User)
@@ -21,13 +28,21 @@ class UserProfile(models.Model):
 
 class Post(models.Model):
 	category = models.ManyToManyField(Category)
-	title = models.CharField(max_length=128, unique=True)
+	title = models.CharField(max_length=128, unique=True, blank=False)
 	published = models.DateField() #defined in view as UTC converted client side w/ moment.js
 	author = models.ForeignKey(User)
 	featured_image = models.ImageField(upload_to='featured_img', blank=False)
-	body = RichTextField(config_name='awesome_ckeditor')
-	video_iframe = models.URLField(max_length=200)
-	project_iframe = models.URLField(max_length=200)
+	body = RichTextField(config_name='awesome_ckeditor', blank=False)
+	media_iframe = EmbedVideoField(max_length=200, null=True, blank=True)
+	project_url = models.URLField(max_length=200, null=True, blank=True)
+	featured = models.BooleanField(default=False)
+	screenshot = models.ImageField(upload_to="app_screenshots", null=True, blank=True )
+	slug = models.SlugField(unique=True, default='')
+
+	def save(self, *args, **kwargs):
+		if not self.id:
+			self.slug = slugify(self.title)
+		super(Post, self).save(*args, **kwargs)
 
 	def __unicode__(self):
 		return self.title 

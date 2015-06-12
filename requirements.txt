@@ -1,5 +1,4 @@
  pillow==2.8.2
  django==1.7
  django-ckeditor==4.4.8
-
- 
+django-embed-video==1.0.0
