@@ -56,4 +56,3 @@ def set_menu_context(request):
 		'code_lib' : code_lib,
 		'code_project' : code_project
 		}
-	}
