@@ -63,7 +63,16 @@ ROOT_URLCONF = 'hustle_science.urls'
 
 WSGI_APPLICATION = 'hustle_science.wsgi.application'
 
-
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.template.context_processors.debug",
+    "django.template.context_processors.i18n",
+    "django.template.context_processors.media",
+    "django.template.context_processors.static",
+    "django.template.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    "hustle_science_pkg.menu_context.set_menu_context"
+)
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 

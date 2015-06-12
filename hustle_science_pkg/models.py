@@ -28,6 +28,7 @@ class UserProfile(models.Model):
 
 class Post(models.Model):
 	category = models.ManyToManyField(Category)
+	content_type = ForeignKey(Content_Type)
 	title = models.CharField(max_length=128, unique=True, blank=False)
 	published = models.DateField() #defined in view as UTC converted client side w/ moment.js
 	author = models.ForeignKey(User)
