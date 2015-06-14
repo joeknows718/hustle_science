@@ -122,3 +122,9 @@ CKEDITOR_CONFIGS = {
 }
 
 #DJANGO_WYSIWYG_MEDIA_URL = os.path.join(STATIC_ROOT, 'ckeditor')
+#email server
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'me@gmail.com'
+EMAIL_HOST_PASSWORD = 'password'
