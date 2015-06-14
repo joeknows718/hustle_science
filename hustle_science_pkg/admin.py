@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models import Category, Post, UserProfile, Comment, Image, UserProfile
+from hustle_science_pkg.models import Category, Post, UserProfile, Comment, Image, UserProfile
 
 class PageAdmin(admin.ModelAdmin):
 	prepopulated_fields = {'slug':('name',)}
