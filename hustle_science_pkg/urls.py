@@ -10,4 +10,7 @@ urlpatterns = patterns('',
 	url(r'^posts-art/', views.post_art, name='/posts-art' ),
 	url(r'^posts-news/', views.post_news, name='/posts-news' ),
 	url(r'^posts-culture/', views.post_culture, name='/posts-culture' ),
+	url(r'^about/', views.about, name='/about' ),
+	url(r'^team/', views.team, name='/team' ),
 	)
+	
