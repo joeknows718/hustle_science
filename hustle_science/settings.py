@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
+SETTINGS_DIR = os.path.dirname(__file__)#setting up for dynamic directory settings to make code portable
+PROJECT_PATH = os.path.join(SETTINGS_DIR, od.pardir)#joins the settings directory withthe os.pardir which refers to parent directory
+PROJECT_PATH = os.path.abspath(PROJECT_PATH) #abs pathyeilds absolute path directory to next dir up in heigherarchy 
+TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -26,8 +29,12 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # Application definition
+
+ADMINS = (
+    ('Joe Knows', 'joeknows718@gmail.com'),
+)
 
 INSTALLED_APPS = (
     'django.contrib.admin',

@@ -35,6 +35,7 @@ class Post(models.Model):
 	author = models.ForeignKey(User)
 	featured_image = models.ImageField(upload_to='featured_img', blank=False)
 	body = RichTextField(config_name='awesome_ckeditor', blank=False)
+	short_desc = models.CharField(max_length=144, blank=False)
 	media_iframe = EmbedVideoField(max_length=200, null=True, blank=True)
 	project_url = models.URLField(max_length=200, null=True, blank=True)
 	featured = models.BooleanField(default=False)
