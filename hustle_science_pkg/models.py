@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
 from embed_video.fields import EmbedVideoField
 from django.template.defaultfilters import slugify
+from datetime import datetime
 
 
 
@@ -30,7 +31,7 @@ class Post(models.Model):
 	category = models.ManyToManyField(Category)
 	content_type = ForeignKey(Content_Type)
 	title = models.CharField(max_length=128, unique=True, blank=False)
-	published = models.DateField() #defined in view as UTC converted client side w/ moment.js
+	published = models.DateField(default=datetime.now) #defined in view as UTC converted client side w/ moment.js
 	author = models.ForeignKey(User)
 	featured_image = models.ImageField(upload_to='featured_img', blank=False)
 	body = RichTextField(config_name='awesome_ckeditor', blank=False)
