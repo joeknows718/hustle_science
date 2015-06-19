@@ -29,13 +29,13 @@ class UserProfile(models.Model):
 
 class Post(models.Model):
 	category = models.ManyToManyField(Category)
-	content_type = ForeignKey(Content_Type)
+	content_type = models.ForeignKey(Content_Type)
 	title = models.CharField(max_length=128, unique=True, blank=False)
 	published = models.DateField(default=datetime.now) #defined in view as UTC converted client side w/ moment.js
 	author = models.ForeignKey(User)
 	featured_image = models.ImageField(upload_to='featured_img', blank=False)
 	body = RichTextField(config_name='awesome_ckeditor', blank=False)
-	short_desc = models.CharField(max_length=144, blank=False)
+	short_desc = models.CharField(max_length=144, blank=False, default='')
 	media_iframe = EmbedVideoField(max_length=200, null=True, blank=True)
 	project_url = models.URLField(max_length=200, null=True, blank=True)
 	featured = models.BooleanField(default=False)
@@ -51,14 +51,6 @@ class Post(models.Model):
 		return self.title 
 
 
-class Comment(models.Model):
-	article = models.ForeignKey(Post)
-	comment_text = models.TextField()
-	published = models.DateTimeField()
-	username = models.CharField(max_length=145)
-
-	def __unicode__(self):
-		return self.comment_text
 
 
 class  Image(models.Model):

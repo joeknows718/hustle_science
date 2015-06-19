@@ -43,7 +43,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'hustle_science_pkg',
     'ckeditor', #https://github.com/django-ckeditor/django-ckeditor
-    'embed_video' #http://django-embed-video.readthedocs.org/en/v1.0.0/examples.html
+    'embed_video',
+    'disqus' #http://django-embed-video.readthedocs.org/en/v1.0.0/examples.html
 
 )
 
@@ -56,6 +57,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+DISQUS_API_KEY ='U4CNif1wX5SKVwDlfcpfslPF2fRoTkVsXgw1Mmo2xdMBTBrLYmldgB64hR5VvSHn'
+DISQUS_WEBSITE_SHORTNAME = "movesmade"
 
 EMBED_VIDEO_BACKENDS =  (
     'embed_video.backends.YoutubeBackend',

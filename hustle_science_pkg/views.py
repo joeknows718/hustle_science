@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from hustle_science_pkg.models import Category, Post, UserProfile, Comment, Image, UserProfile
+from hustle_science_pkg.models import Category, Post, UserProfile, Content_Type, Image, UserProfile
 from django.core.mail import send_mail
 
 
