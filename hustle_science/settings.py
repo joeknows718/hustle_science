@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
+TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
+STATIC_PATH = os.path.join(BASE_DIR, 'static')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -26,8 +27,12 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # Application definition
+
+ADMINS = (
+    ('Joe Knows', 'joeknows718@gmail.com'),
+)
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -38,7 +43,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'hustle_science_pkg',
     'ckeditor', #https://github.com/django-ckeditor/django-ckeditor
-    'embed_video' #http://django-embed-video.readthedocs.org/en/v1.0.0/examples.html
+    'embed_video',
+    'disqus' #http://django-embed-video.readthedocs.org/en/v1.0.0/examples.html
 
 )
 
@@ -51,6 +57,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+DISQUS_API_KEY ='U4CNif1wX5SKVwDlfcpfslPF2fRoTkVsXgw1Mmo2xdMBTBrLYmldgB64hR5VvSHn'
+DISQUS_WEBSITE_SHORTNAME = "movesmade"
 
 EMBED_VIDEO_BACKENDS =  (
     'embed_video.backends.YoutubeBackend',
@@ -117,3 +126,9 @@ CKEDITOR_CONFIGS = {
 }
 
 #DJANGO_WYSIWYG_MEDIA_URL = os.path.join(STATIC_ROOT, 'ckeditor')
+#email server
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'me@gmail.com'
+EMAIL_HOST_PASSWORD = 'password'
