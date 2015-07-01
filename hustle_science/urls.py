@@ -9,5 +9,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^ckeditor/', include('ckeditor.urls')),
     url('^', include('django.contrib.auth.urls')),
-    url(r'^/', include('hustle_science_pkg.urls'))
+    url('^', include('hustle_science_pkg.urls'))
 )

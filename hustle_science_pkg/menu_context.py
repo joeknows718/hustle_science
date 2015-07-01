@@ -1,36 +1,36 @@
 from models import Post
 
 def set_menu_context(request):
-	video =  Post.objects.filter(content_type="video")
-	article = Post.objects.filter(content_type="article")
-	photo = Post.objects.filter(content_type="photo")
-	code = Post.objects.filter(catagory__icontains="code")
+	video =  Post.objects.filter(content_type__media_type="video")
+	article = Post.objects.filter(content_type__media_type="article")
+	photo = Post.objects.filter(content_type__media_type="photo")
+	code = Post.objects.filter(category__tag__in=['code'])
 
-	video_business = video.filter(catagory__icontains="business")[:2]
-	video_fashion = video.filter(catagory__icontains="fashion")[:2]
-	video_music = video.filter(catagory__icontains="music")[:2]
-	video_art = video.filter(catagory__icontains="art")[:2]
-	video_culture = video.filter(catagory__icontains="culture")[:2]
-	video_tech = video.filter(catagory__icontains="technology")[:2]
-	video_news = video.filter(catagory__icontains="news")[:2]
+	video_business = video.filter(category__tag__in="business")[:2]
+	video_fashion = video.filter(category__tag__in="fashion")[:2]
+	video_music = video.filter(category__tag__in="music")[:2]
+	video_art = video.filter(category__tag__in="art")[:2]
+	video_culture = video.filter(category__tag__in="culture")[:2]
+	video_tech = video.filter(category__tag__in="technology")[:2]
+	video_news = video.filter(category__tag__in="news")[:2]
 
-	article_business = article.filter(catagory__icontains="business")[:2]
-	article_fashion = article.filter(catagory__icontains="fashion")[:2]
-	article_music = article.filter(catagory__icontains="music")[:2]
-	article_art = article.filter(catagory__icontains="art")[:2]
-	article_culture = article.filter(catagory__icontains="culture")[:2]
-	article_tech = article.filter(catagory__icontains="technology")[:2]
-	article_news = article.filter(catagory__icontains="news")[:2]
+	article_business = article.filter(category__tag__in="business")[:2]
+	article_fashion = article.filter(category__tag__in="fashion")[:2]
+	article_music = article.filter(category__tag__in="music")[:2]
+	article_art = article.filter(category__tag__in="art")[:2]
+	article_culture = article.filter(category__tag__in="culture")[:2]
+	article_tech = article.filter(category__tag__in="technology")[:2]
+	article_news = article.filter(category__tag__in="news")[:2]
 
-	photo_fashion = photo.filter(catagory__icontains="fashion")[:2]
-	photo_music = photo.filter(catagory__icontains="music")[:2]
-	photo_art = photo.filter(catagory__icontains="art")[:2]
-	photo_culture = photo.filter(catagory__icontains="culture")[:2]
-	photo_tech = photo.filter(catagory__icontains="technology")[:2]
+	photo_fashion = photo.filter(category__tag__in="fashion")[:2]
+	photo_music = photo.filter(category__tag__in="music")[:2]
+	photo_art = photo.filter(category__tag__in="art")[:2]
+	photo_culture = photo.filter(category__tag__in="culture")[:2]
+	photo_tech = photo.filter(category__tag__in="technology")[:2]
 
-	code_project = code.filter(catagory__icontains="project")[:2]
-	code_lib = code.filter(catagory__icontains="library")[:2]
-	code_tutorial = code.filter(catagory__icontains="tutorial")[:2]
+	code_project = code.filter(category__tag__in="project")[:2]
+	code_lib = code.filter(category__tag__in="library")[:2]
+	code_tutorial = code.filter(category__tag__in="tutorial")[:2]
 
 	return {
 		'video_business' : video_business,

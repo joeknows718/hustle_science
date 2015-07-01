@@ -6,11 +6,11 @@ from django.core.mail import send_mail
 
 def index(request):
 	context_dict = {}
-	posts = Post.objects.latest(datetime)[:20]
-	featured_posts = Post.objects.filter(featured=True).latest(datetime)[:2]
+	posts = Post.objects.order_by('-published')[:20]
+	featured_posts = Post.objects.filter(featured=True).order_by('-published')[:2]
 	context_dict['posts'] = posts
 	context_dict['featured_posts'] = featured_posts
-	return render(request, 'hustle_science/index.html', context_dict )
+	return render(request, 'index.html', context_dict )
 
 def post_business(request):
 	context_dict = {}
