@@ -1,4 +1,4 @@
-from models import Post
+zzfrom models import Post
 
 def set_menu_context(request):
 	video =  Post.objects.filter(content_type__media_type="video")

@@ -42,7 +42,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # Application definition
 
 ADMINS = (
-    ('Joe Knows', 'joeknows718@gmail.com'),
+    ('joeknows718@gmail.com'),
 )
 
 INSTALLED_APPS = (
@@ -143,3 +143,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'me@gmail.com'
 EMAIL_HOST_PASSWORD = 'password'
+
